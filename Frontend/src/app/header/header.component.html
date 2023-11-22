@@ -2,7 +2,7 @@
   <div class="header-container">
     <img *ngIf="logo" [src]="logo" (click)="goToHomePage()" alt="logo" />
     <div class="login-block">
-      <button>Войти</button>
+      <button routerLink="/Login">Войти</button>
     </div>
   </div>
 </header>
