@@ -232,3 +232,85 @@
     }
   }
 }
+
+// adaptive detail page
+
+.article-detail-container {
+  .article-small-photo {
+    display: none;
+  }
+  @media screen and (max-width: 1040px) {
+    .article-small-photo {
+      display: block;
+      margin-right: 0;
+      width: 330px;
+    }
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  .article-big-photo {
+    display: none;
+  }
+  .big-title {
+    font-size: 20px !important;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .big-create-date {
+    font-size: 13px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .big-description1 {
+    font-size: 16px !important;
+    font-style: normal;
+    font-weight: 500;
+    margin-top: 35px;
+  }
+  .big-description2 {
+    font-size: 16px !important;
+    font-style: normal;
+    font-weight: 500;
+    margin-top: 35px;
+  }
+  .big-description3 {
+    font-size: 16px !important;
+    font-style: normal;
+    font-weight: 500;
+    margin-top: 35px;
+  }
+  .big-comments {
+    font-size: 20px !important;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 40px;
+  }
+  .article-detail-content {
+    span,
+    p {
+      max-width: 300px !important;
+    }
+  }
+  .username {
+    font-size: 18px !important;
+    .user-text {
+      font-size: 16px !important;
+    }
+  }
+  .comment-by-user {
+    max-width: 300px !important;
+  }
+  .article-detail-content {
+    padding: 20px 15px !important;
+    width: 300px !important;
+  }
+  .write-comment input {
+    padding-right: 20px !important;
+    padding-left: 15px !important;
+    width: 76% !important;
+  }
+}
