@@ -1,0 +1,25 @@
+@import "../../styles.scss";
+
+.blog {
+  background-color: $darkgray;
+  h1 {
+    text-align: center;
+    color: $fontcol;
+    font-size: 54px;
+    padding: 55px 0;
+  }
+  .article-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .article {
+      cursor: pointer;
+      background-color: $lightgray;
+      height: 100%;
+      .article-content {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}

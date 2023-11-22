@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap");
+
+$darkgray: #111111;
+$lightgray: #161616;
+$blue: #0495b6;
+$fontcol: #fff;
+
+body {
+  margin: 0;
+  top: 0;
+  left: 0;
+}
+
+p,
+a,
+span,
+button,
+h1,
+h2,
+h3,
+li,
+ul {
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+button,
+a {
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+button:hover,
+a:hover {
+  transition: 0.3s;
+  opacity: 0.7;
+}
