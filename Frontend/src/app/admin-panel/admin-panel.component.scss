@@ -2,9 +2,12 @@
 
 .admin-panel-block {
   background-color: $darkgray;
-  height: 100vh;
+  min-height: 100vh;
   .admin-panel-container {
     padding: 50px;
+    @media screen and (max-width: 925px) {
+      padding: 15px;
+    }
     .return-main {
       background-color: $blue;
       border-radius: 13px;
@@ -32,6 +35,10 @@
       .big-small-photo-txt {
         display: flex;
         align-items: center;
+        @media screen and (max-width: 925px) {
+          flex-direction: column;
+          align-items: flex-start;
+        }
       }
       .drop-small-photo {
         background-color: $lightgray;
@@ -61,7 +68,7 @@
         input {
           margin-top: 20px;
           height: 30px;
-          width: 808px;
+          width: 798px;
           background-color: $lightgray;
           border-radius: 10px;
           color: $fontcol;
@@ -69,6 +76,9 @@
           font-size: 18px;
           padding-left: 20px;
           margin-bottom: 20px;
+          @media screen and (max-width: 925px) {
+            width: 300px;
+          }
         }
         .put-name {
           margin-bottom: 0px;
@@ -87,6 +97,9 @@ textarea {
   resize: none;
   font-size: 18px;
   padding: 20px;
+  @media screen and (max-width: 925px) {
+    width: 290px;
+  }
   &::-webkit-scrollbar {
     width: 12px;
   }
@@ -103,6 +116,10 @@ textarea {
 
 .big-photo-block {
   margin-left: 100px;
+  @media screen and (max-width: 925px) {
+    margin-left: 0;
+    margin-top: 40px;
+  }
 }
 
 .create {
@@ -113,3 +130,5 @@ textarea {
   font-size: 18px;
   border-radius: 10px;
 }
+
+// adaptive
