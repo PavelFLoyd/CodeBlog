@@ -8,8 +8,9 @@ import { Article1DetailComponent } from './article-list/article1-detail/article1
 import { Article2DetailComponent } from './article-list/article2-detail/article2-detail.component';
 import { Article3DetailComponent } from './article-list/article3-detail/article3-detail.component';
 import { Article4DetailComponent } from './article-list/article4-detail/article4-detail.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
+import { LoginPageComponent } from './auth/login-page/login-page.component';
+import { RegisterPageComponent } from './auth/register-page/register-page.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Articles', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'Article4', component: Article4DetailComponent },
   { path: 'Login', component: LoginPageComponent },
   { path: 'Register', component: RegisterPageComponent },
+  { path: 'Admin', component: AdminPanelComponent },
 ];
 
 @NgModule({
@@ -33,6 +35,7 @@ const routes: Routes = [
     Article4DetailComponent,
     LoginPageComponent,
     RegisterPageComponent,
+    AdminPanelComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes)],
   bootstrap: [AppComponent],
