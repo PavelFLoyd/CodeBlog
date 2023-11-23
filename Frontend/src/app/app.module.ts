@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms'; // Добавлен импорт FormsModule
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ArticleListComponent } from './article-list/article-list.component';
@@ -37,7 +38,7 @@ const routes: Routes = [
     RegisterPageComponent,
     AdminPanelComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  imports: [BrowserModule, RouterModule.forRoot(routes), FormsModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

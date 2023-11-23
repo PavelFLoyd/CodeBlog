@@ -35,16 +35,18 @@
       </p>
       <p class="big-comments">Комментарии:</p>
       <div class="comments-block">
-        <div class="comment-by-user">
-          <span class="username">p1nkf1oyd:</span>
-          <p class="user-text">
-            Крутая статья Крутая статья Крутая статья Крутая статья Крутая
-            статья Крутая статья Крутая статья
-          </p>
+        <div *ngFor="let comment of comments" class="comment-by-user">
+          <span class="username">{{ comment.username }}:</span>
+          <p class="user-text">{{ comment.text }}</p>
         </div>
         <div class="write-comment">
-          <input type="text" placeholder="Написать Комментарий" />
-          <div class="send-comment">
+          <input
+            type="text"
+            placeholder="Написать Комментарий"
+            [(ngModel)]="newComment"
+            (keydown.enter)="addComment()"
+          />
+          <div class="send-comment" (click)="addComment()">
             <img *ngIf="sendsvg" [src]="sendsvg" alt="send-arrow" />
           </div>
         </div>
