@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   logo: string = '/assets/Logo.png';
+  exit: string = '/assets/exit.svg';
 
   constructor(private router: Router) {}
 
