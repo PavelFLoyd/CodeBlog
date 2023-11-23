@@ -2,19 +2,54 @@
   <div class="admin-panel-container">
     <button class="return-main" routerLink="/"><- Вернуться на главную</button>
     <p class="add-art-txt">Добавить статью</p>
+    <hr />
     <div class="small-publish-block">
-      <p>Маленькая фотка:</p>
-      <div class="drop-small-photo" (click)="handleFileInputClick()">
-        <input
-          type="file"
-          accept="image/*"
-          (change)="handleFileInputChange($event)"
-          #fileInput
-          style="display: none"
-        />
-        <img *ngIf="dropsvg" [src]="dropsvg" alt="add-photo" />
-        <p>Загрузить</p>
+      <div class="big-small-photo-txt">
+        <div class="small-photo-block">
+          <p>Маленький Баннер:</p>
+          <div class="drop-small-photo" (click)="handleFileInputClick()">
+            <input
+              type="file"
+              accept="image/*"
+              (change)="handleFileInputChange($event)"
+              #fileInput
+              style="display: none"
+            />
+            <img *ngIf="dropsvg" [src]="dropsvg" alt="add-photo" />
+            <p>Загрузить</p>
+          </div>
+        </div>
+        <div class="big-photo-block">
+          <p class="big-photo-txt">Большой Баннер:</p>
+          <div
+            class="drop-small-photo drop-big-photo"
+            (click)="handleFileInputClick()"
+          >
+            <input
+              type="file"
+              accept="image/*"
+              (change)="handleFileInputChange($event)"
+              #fileInput
+              style="display: none"
+            />
+            <img *ngIf="dropsvg" [src]="dropsvg" alt="add-photo" />
+            <p>Загрузить</p>
+          </div>
+        </div>
       </div>
+      <div class="inputs-to-add-block">
+        <input class="put-name" type="text" placeholder="Название Статьи" />
+        <input class="put-small-desc" type="text" placeholder="Описание" />
+      </div>
+      <textarea
+        class="textarea"
+        name=""
+        id=""
+        cols="78"
+        rows="10"
+        placeholder="Текст статьи"
+      ></textarea>
     </div>
+    <button class="create">Создать</button>
   </div>
 </div>
