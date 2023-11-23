@@ -1,0 +1,50 @@
+@import "../../styles.scss";
+
+.admin-panel-block {
+  background-color: $darkgray;
+  height: 100vh;
+  .admin-panel-container {
+    padding: 50px;
+    .return-main {
+      background-color: $blue;
+      border-radius: 13px;
+      padding: 7px 13px;
+      font-size: 15px;
+      color: $fontcol;
+    }
+    .add-art-txt {
+      color: $fontcol;
+      margin-top: 40px;
+      font-size: 25px;
+    }
+    .small-publish-block {
+      margin-top: 60px;
+      p {
+        color: $fontcol;
+        font-size: 22px;
+      }
+      .drop-small-photo {
+        background-color: $lightgray;
+        width: 130px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 13px;
+        cursor: pointer;
+        margin-top: 20px;
+        img {
+          width: 30px;
+          height: 30px;
+          margin-right: 13px;
+        }
+        p {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

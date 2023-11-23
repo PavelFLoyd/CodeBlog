@@ -1,1 +1,20 @@
-<p>admin-panel works!</p>
+<div class="admin-panel-block">
+  <div class="admin-panel-container">
+    <button class="return-main" routerLink="/"><- Вернуться на главную</button>
+    <p class="add-art-txt">Добавить статью</p>
+    <div class="small-publish-block">
+      <p>Маленькая фотка:</p>
+      <div class="drop-small-photo" (click)="handleFileInputClick()">
+        <input
+          type="file"
+          accept="image/*"
+          (change)="handleFileInputChange($event)"
+          #fileInput
+          style="display: none"
+        />
+        <img *ngIf="dropsvg" [src]="dropsvg" alt="add-photo" />
+        <p>Загрузить</p>
+      </div>
+    </div>
+  </div>
+</div>
