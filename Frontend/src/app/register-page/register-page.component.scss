@@ -1,0 +1,53 @@
+@import "../../styles.scss";
+
+.register-block {
+  background-color: $darkgray;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .register-container {
+    padding-bottom: 100px;
+    p {
+      font-size: 24px;
+      color: $fontcol;
+      text-align: center;
+    }
+    .auth-input-block {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      input {
+        margin: 15px 0;
+        width: 300px;
+        height: 47px;
+        border-radius: 13px;
+        background-color: $lightgray;
+        padding-left: 20px;
+        padding-right: 20px;
+        color: $fontcol;
+        font-size: 18px;
+        &::placeholder {
+          font-size: 18px;
+        }
+      }
+    }
+    .auth-bottom-buttons-block {
+      display: flex;
+      flex-direction: column;
+      width: 340px;
+      button {
+        border-radius: 13px;
+        margin: 10px 0;
+        height: 47px;
+        font-size: 16px;
+      }
+      .Register {
+        background-color: $lightgray;
+        color: $fontcol;
+        background-color: $blue;
+      }
+    }
+  }
+}
