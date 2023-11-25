@@ -23,4 +23,7 @@ export class YourApiService {
   logout(): Observable<any> {
     return this.http.get(`${this.apiUrl}/logout`);
   }
+  checkAuthentication(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/is_authenticated`);
+  }
 }

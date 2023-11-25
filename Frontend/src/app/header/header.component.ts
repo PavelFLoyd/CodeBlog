@@ -1,6 +1,9 @@
+// header.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { YourApiService } from '../your-api.service';
 
 @Component({
   selector: 'app-header',
@@ -13,18 +16,55 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
   username: string | null = null;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private yourApiService: YourApiService
+  ) {}
 
   ngOnInit() {
+    this.restoreAuthentication();
+
     this.authService.onLogin().subscribe((username) => {
       this.isLoggedIn = true;
       this.username = username;
+      this.authService.saveAuthenticationState(); // Используем публичный метод
     });
 
     this.authService.onLogout().subscribe(() => {
       this.isLoggedIn = false;
       this.username = null;
+      this.authService.clearAuthenticationState(); // Используем публичный метод
     });
+  }
+
+  restoreAuthentication() {
+    const loggedInUser = this.authService.getLoggedInUser();
+    if (loggedInUser) {
+      this.isLoggedIn = true;
+      this.username = loggedInUser;
+    } else {
+      // Если пользователь не вошел, проверяем аутентификацию на сервере
+      this.checkAuthentication();
+    }
+  }
+
+  checkAuthentication() {
+    this.yourApiService.checkAuthentication().subscribe(
+      (isAuthenticated) => {
+        if (isAuthenticated) {
+          const loggedInUser = this.authService.getLoggedInUser();
+          if (loggedInUser) {
+            this.isLoggedIn = true;
+            this.username = loggedInUser;
+            this.authService.saveAuthenticationState(); // Используем публичный метод
+          }
+        }
+      },
+      (error) => {
+        console.error('Ошибка при проверке аутентификации', error);
+      }
+    );
   }
 
   logout() {
