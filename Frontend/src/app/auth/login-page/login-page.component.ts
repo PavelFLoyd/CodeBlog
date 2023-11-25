@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-login-page',
@@ -9,8 +9,12 @@ export class LoginPageComponent {
   disableScroll() {
     document.body.style.overflow = 'hidden';
   }
-  someMethod() {
-    const loginPage = new LoginPageComponent();
-    loginPage.disableScroll();
+
+  @HostListener('input', ['$event'])
+  onInput(event: any) {
+    const englishOnlyRegex = /^[a-zA-Z]*$/;
+    if (!englishOnlyRegex.test(event.target.value)) {
+      event.target.value = event.target.value.replace(/[^a-zA-Z]/g, '');
+    }
   }
 }

@@ -19,7 +19,7 @@ export class Article2DetailComponent {
   addComment(): void {
     if (this.newComment.trim() !== '') {
       this.comments.push({
-        username: '', // НИК ЮЗЕРА ЗАРЕГИСТРИРОВАННОГО
+        username: '',
         text: this.newComment,
       });
       this.newComment = '';
