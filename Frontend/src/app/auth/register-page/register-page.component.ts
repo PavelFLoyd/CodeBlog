@@ -1,4 +1,9 @@
-import { Component, HostListener } from '@angular/core';
+// register-page.component.ts
+
+import { Component } from '@angular/core';
+import { YourApiService } from '../../your-api.service';
+import { AuthService } from '../../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -6,11 +11,30 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./register-page.component.scss'],
 })
 export class RegisterPageComponent {
-  @HostListener('input', ['$event'])
-  onInput(event: any) {
-    const englishOnlyRegex = /^[a-zA-Z]*$/;
-    if (!englishOnlyRegex.test(event.target.value)) {
-      event.target.value = event.target.value.replace(/[^a-zA-Z]/g, '');
-    }
+  username: string = '';
+  password: string = '';
+
+  constructor(
+    private apiService: YourApiService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  registerUser() {
+    const userData = {
+      username: this.username,
+      password: this.password,
+    };
+
+    this.apiService.registerUser(userData).subscribe(
+      (response: any) => {
+        console.log('Регистрация успешна', response);
+        this.authService.notifyRegistrationSuccess(this.username);
+
+        // Redirect to the root path
+        this.router.navigate(['/']);
+      }
+      // ... (rest of the error handling remains unchanged)
+    );
   }
 }

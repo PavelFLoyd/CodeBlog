@@ -2,11 +2,23 @@
   <div class="register-container">
     <p>Регистрация</p>
     <div class="auth-input-block">
-      <input class="Login" type="text" placeholder="Логин" />
-      <input class="Password" type="password" placeholder="Пароль" />
+      <input
+        class="Login"
+        type="text"
+        placeholder="Логин"
+        [(ngModel)]="username"
+      />
+      <input
+        class="Password"
+        type="password"
+        placeholder="Пароль"
+        [(ngModel)]="password"
+      />
     </div>
     <div class="auth-bottom-buttons-block">
-      <button class="RegisterUser">Зарегистрироваться</button>
+      <button class="RegisterUser" (click)="registerUser()">
+        Зарегистрироваться
+      </button>
     </div>
   </div>
 </div>

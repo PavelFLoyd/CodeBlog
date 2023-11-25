@@ -2,9 +2,9 @@
   <div class="header-container">
     <img *ngIf="logo" [src]="logo" (click)="goToHomePage()" alt="logo" />
     <div class="login-block">
-      <button routerLink="/login">Войти</button>
-      <div class="logout-block" style="display: none">
-        <span class="user-auth-nick">p1nkf1oyd</span>
+      <button *ngIf="!isLoggedIn" routerLink="/login">Войти</button>
+      <div *ngIf="isLoggedIn" class="logout-block">
+        <span class="user-auth-nick">{{ username }}</span>
         <button class="logout">
           <img *ngIf="exit" [src]="exit" alt="logout" />
         </button>
