@@ -12,18 +12,18 @@ import { Article4DetailComponent } from './article-list/article4-detail/article4
 import { LoginPageComponent } from './auth/login-page/login-page.component';
 import { RegisterPageComponent } from './auth/register-page/register-page.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'Articles', pathMatch: 'full' },
-  { path: '', component: ArticleListComponent },
   { path: 'Article1', component: Article1DetailComponent },
   { path: 'Article2', component: Article2DetailComponent },
   { path: 'Article3', component: Article3DetailComponent },
   { path: 'Article4', component: Article4DetailComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
   { path: 'Register', component: RegisterPageComponent },
   { path: 'Admin', component: AdminPanelComponent },
+  { path: '', redirectTo: 'Articles', pathMatch: 'full' },
+  { path: '', component: ArticleListComponent },
 ];
 
 @NgModule({
@@ -39,7 +39,12 @@ const routes: Routes = [
     RegisterPageComponent,
     AdminPanelComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes), FormsModule],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    FormsModule,
+    HttpClientModule,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -9,12 +9,4 @@ export class LoginPageComponent {
   disableScroll() {
     document.body.style.overflow = 'hidden';
   }
-
-  @HostListener('input', ['$event'])
-  onInput(event: any) {
-    const englishOnlyRegex = /^[a-zA-Z]*$/;
-    if (!englishOnlyRegex.test(event.target.value)) {
-      event.target.value = event.target.value.replace(/[^a-zA-Z]/g, '');
-    }
-  }
 }
