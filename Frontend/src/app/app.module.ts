@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'Article2', component: Article2DetailComponent },
   { path: 'Article3', component: Article3DetailComponent },
   { path: 'Article4', component: Article4DetailComponent },
-  { path: 'Login', component: LoginPageComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginPageComponent },
   { path: 'Register', component: RegisterPageComponent },
   { path: 'Admin', component: AdminPanelComponent },
 ];

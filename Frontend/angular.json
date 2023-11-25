@@ -25,14 +25,7 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
-            "scripts": [],
-            "angularCliSitemap": {
-              "urlPrefix": "https://localhost:4200",
-              "outputPath": "dist/sitemap.xml",
-              "lastmod": true,
-              "changefreq": "monthly",
-              "priority": 0.5
-            }
+            "scripts": []
           },
 
           "configurations": {
