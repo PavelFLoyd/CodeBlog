@@ -1,5 +1,3 @@
-// register-page.component.ts
-
 import { Component } from '@angular/core';
 import { YourApiService } from '../../your-api.service';
 import { AuthService } from '../../auth.service';
@@ -29,12 +27,12 @@ export class RegisterPageComponent {
     this.apiService.registerUser(userData).subscribe(
       (response: any) => {
         console.log('Регистрация успешна', response);
-        this.authService.notifyRegistrationSuccess(this.username);
-
-        // Redirect to the root path
+        this.authService.notifyLogin(this.username);
         this.router.navigate(['/']);
+      },
+      (error: any) => {
+        // Обработка ошибок
       }
-      // ... (rest of the error handling remains unchanged)
     );
   }
 }

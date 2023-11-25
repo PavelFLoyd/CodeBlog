@@ -5,23 +5,29 @@ import { Subject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private registrationSuccessSubject = new Subject<void>();
   private loggedInUser: string | null = null;
-
-  notifyRegistrationSuccess(username: string): void {
-    this.loggedInUser = username;
-    this.registrationSuccessSubject.next();
-  }
+  private loginSubject = new Subject<string | null>();
+  private logoutSubject = new Subject<void>();
 
   getLoggedInUser(): string | null {
     return this.loggedInUser;
   }
 
-  clearLoggedInUser(): void {
-    this.loggedInUser = null;
+  notifyLogin(username: string): void {
+    this.loggedInUser = username;
+    this.loginSubject.next(username);
   }
 
-  onRegistrationSuccess(): Observable<void> {
-    return this.registrationSuccessSubject.asObservable();
+  notifyLogout(): void {
+    this.loggedInUser = null;
+    this.logoutSubject.next();
+  }
+
+  onLogin(): Observable<string | null> {
+    return this.loginSubject.asObservable();
+  }
+
+  onLogout(): Observable<void> {
+    return this.logoutSubject.asObservable();
   }
 }

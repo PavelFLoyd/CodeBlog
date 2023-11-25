@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { YourApiService } from '../your-api.service';
 
 @Component({
   selector: 'app-header',
@@ -14,31 +13,23 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
   username: string | null = null;
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private apiService: YourApiService
-  ) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
-    this.authService.onRegistrationSuccess().subscribe(() => {
+    this.authService.onLogin().subscribe((username) => {
       this.isLoggedIn = true;
-      this.username = this.authService.getLoggedInUser();
+      this.username = username;
+    });
+
+    this.authService.onLogout().subscribe(() => {
+      this.isLoggedIn = false;
+      this.username = null;
     });
   }
 
   logout() {
-    this.apiService.logout().subscribe(
-      () => {
-        console.log('Сессия завершена');
-        this.authService.clearLoggedInUser();
-        this.isLoggedIn = false;
-        this.router.navigate(['/']);
-      },
-      (error) => {
-        console.error('Ошибка при завершении сессии', error);
-      }
-    );
+    this.authService.notifyLogout();
+    this.router.navigate(['/']);
   }
 
   goToHomePage() {
