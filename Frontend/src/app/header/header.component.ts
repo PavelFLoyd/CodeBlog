@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { YourApiService } from '../your-api.service';
 
 @Component({
   selector: 'app-header',
@@ -13,14 +14,31 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
   username: string | null = null;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private apiService: YourApiService
+  ) {}
 
   ngOnInit() {
     this.authService.onRegistrationSuccess().subscribe(() => {
-      // Update the view when registration is successful
       this.isLoggedIn = true;
       this.username = this.authService.getLoggedInUser();
     });
+  }
+
+  logout() {
+    this.apiService.logout().subscribe(
+      () => {
+        console.log('Сессия завершена');
+        this.authService.clearLoggedInUser();
+        this.isLoggedIn = false;
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        console.error('Ошибка при завершении сессии', error);
+      }
+    );
   }
 
   goToHomePage() {

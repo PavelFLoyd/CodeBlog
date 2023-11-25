@@ -1,5 +1,3 @@
-// auth.service.ts
-
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
@@ -17,6 +15,10 @@ export class AuthService {
 
   getLoggedInUser(): string | null {
     return this.loggedInUser;
+  }
+
+  clearLoggedInUser(): void {
+    this.loggedInUser = null;
   }
 
   onRegistrationSuccess(): Observable<void> {

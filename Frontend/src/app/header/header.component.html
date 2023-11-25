@@ -5,7 +5,7 @@
       <button *ngIf="!isLoggedIn" routerLink="/login">Войти</button>
       <div *ngIf="isLoggedIn" class="logout-block">
         <span class="user-auth-nick">{{ username }}</span>
-        <button class="logout">
+        <button class="logout" (click)="logout()">
           <img *ngIf="exit" [src]="exit" alt="logout" />
         </button>
       </div>
