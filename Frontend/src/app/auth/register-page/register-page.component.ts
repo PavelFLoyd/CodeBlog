@@ -1,3 +1,5 @@
+// RegisterPageComponent
+
 import { Component } from '@angular/core';
 import { YourApiService } from '../../your-api.service';
 import { AuthService } from '../../auth.service';
@@ -27,7 +29,8 @@ export class RegisterPageComponent {
     this.apiService.registerUser(userData).subscribe(
       (response: any) => {
         console.log('Регистрация успешна', response);
-        this.authService.notifyLogin(this.username);
+        const isSuperUser = false; // В регистрации, обычно пользователь не является суперпользователем
+        this.authService.notifyLogin(this.username, isSuperUser);
         this.router.navigate(['/']);
       },
       (error: any) => {

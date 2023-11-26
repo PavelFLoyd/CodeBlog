@@ -28,13 +28,13 @@ export class HeaderComponent implements OnInit {
     this.authService.onLogin().subscribe((username) => {
       this.isLoggedIn = true;
       this.username = username;
-      this.authService.saveAuthenticationState(); // Используем публичный метод
+      this.authService.saveAuthenticationState(); // Изменено
     });
 
     this.authService.onLogout().subscribe(() => {
       this.isLoggedIn = false;
       this.username = null;
-      this.authService.clearAuthenticationState(); // Используем публичный метод
+      this.authService.clearAuthenticationState(); // Изменено
     });
   }
 
@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
           if (loggedInUser) {
             this.isLoggedIn = true;
             this.username = loggedInUser;
-            this.authService.saveAuthenticationState(); // Используем публичный метод
+            this.authService.saveAuthenticationState(); // Изменено
           }
         }
       },

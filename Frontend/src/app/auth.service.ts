@@ -1,5 +1,4 @@
 // auth.service.ts
-
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
@@ -11,6 +10,7 @@ export class AuthService {
   private loginSubject = new Subject<string | null>();
   private logoutSubject = new Subject<void>();
   private STORAGE_KEY = 'loggedInUser';
+  private currentUser: { isSuperUser?: boolean } = {};
 
   constructor() {
     this.restoreAuthenticationState();
@@ -28,14 +28,16 @@ export class AuthService {
     return this.loggedInUser;
   }
 
-  notifyLogin(username: string): void {
+  notifyLogin(username: string, isSuperUser: boolean): void {
     this.loggedInUser = username;
+    this.currentUser = { isSuperUser };
     this.loginSubject.next(username);
     this.saveAuthenticationState();
   }
 
   notifyLogout(): void {
     this.loggedInUser = null;
+    this.currentUser = {};
     this.logoutSubject.next();
     this.clearAuthenticationState();
   }
@@ -54,5 +56,13 @@ export class AuthService {
 
   clearAuthenticationState() {
     localStorage.removeItem(this.STORAGE_KEY);
+  }
+
+  isSuperUser(): boolean {
+    return !!this.currentUser.isSuperUser;
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.loggedInUser;
   }
 }

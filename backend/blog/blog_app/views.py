@@ -12,6 +12,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
+
 class ArticlesView(APIView):
     """
     API endpoint for all articles

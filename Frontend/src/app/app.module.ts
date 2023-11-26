@@ -13,6 +13,8 @@ import { LoginPageComponent } from './auth/login-page/login-page.component';
 import { RegisterPageComponent } from './auth/register-page/register-page.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HttpClientModule } from '@angular/common/http';
+import { YourApiService } from './your-api.service';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   { path: 'Article1', component: Article1DetailComponent },
@@ -21,7 +23,7 @@ const routes: Routes = [
   { path: 'Article4', component: Article4DetailComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'Register', component: RegisterPageComponent },
-  { path: 'Admin', component: AdminPanelComponent },
+  { path: 'Admin', component: AdminPanelComponent, canActivate: [AdminGuard] },
   { path: '', redirectTo: 'Articles', pathMatch: 'full' },
   { path: '', component: ArticleListComponent },
 ];
@@ -45,6 +47,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
   ],
+  providers: [YourApiService, AdminGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

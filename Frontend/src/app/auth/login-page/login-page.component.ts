@@ -1,3 +1,5 @@
+// Login.component
+
 import { Component } from '@angular/core';
 import { YourApiService } from '../../your-api.service';
 import { AuthService } from '../../auth.service';
@@ -18,6 +20,14 @@ export class LoginPageComponent {
     private router: Router
   ) {}
 
+  onLoginSuccess() {
+    // Предположим, что вы получаете информацию о суперпользователе из ответа сервера
+    const isSuperUser = true; // Подставьте сюда значение суперпользователя
+
+    this.authService.notifyLogin('username', isSuperUser);
+    // Другая логика после успешного входа, например, перенаправление на нужную страницу
+  }
+
   loginUser() {
     const userData = {
       username: this.username,
@@ -27,7 +37,9 @@ export class LoginPageComponent {
     this.apiService.loginUser(userData).subscribe(
       (response: any) => {
         console.log('Авторизация успешна', response);
-        this.authService.notifyLogin(this.username);
+        // Предположим, что сервер возвращает информацию о суперпользователе
+        const isSuperUser = response.isSuperUser; // Подставьте сюда значение суперпользователя
+        this.authService.notifyLogin(this.username, isSuperUser);
         this.router.navigate(['/']);
       },
       (error: any) => {

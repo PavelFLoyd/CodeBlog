@@ -3,6 +3,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Article } from './article.model';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +26,11 @@ export class YourApiService {
   }
   checkAuthentication(): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/is_authenticated`);
+  }
+  createArticle(articleData: any): Observable<Article> {
+    return this.http.post<Article>(`${this.apiUrl}/article`, articleData);
+  }
+  getCurrentUser(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/current_user`);
   }
 }
